@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+<!-- 
+	<classPathEntry	location="D:\data\maven-repos\mysql\mysql-connector-java\5.1.17\mysql-connector-java-5.1.17.jar" />
+ -->
+	<classPathEntry	location="D:\ext_env\maven_repo\com\h2database\h2\1.4.177\h2-1.4.177.jar" />
+	<context id="context1">
+		<!-- pagination plugin -->
+		<!-- <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin> -->
+		<!-- <plugin type="cn.kane.mybatis.PaginationMysqlPlugin" /> -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+		<!-- mysql -->
+		<!-- 
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/test" userId="root"
+			password="" />
+		 -->
+
+		<jdbcConnection driverClass="org.h2.Driver"
+			connectionURL="jdbc:h2:tcp://172.22.217.66/mem/test" userId="sa"
+			password="" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- pagination -->
+		<!-- 
+		<javaModelGenerator targetPackage="cn.kane.mybatis.domain"
+			targetProject="myBatisDemo" />
+		<sqlMapGenerator targetPackage="cn.kane.mybatis.xmlmapper"
+			targetProject="myBatisDemo" />
+		<javaClientGenerator targetPackage="cn.kane.mybatis.mapper"
+			targetProject="myBatisDemo" type="XMLMAPPER" /> 
+		<table schema="" tableName="code" domainObjectName="Code"/>
+			-->
+		
+		<!-- un-pagination -->	
+		<javaModelGenerator targetPackage="cn.kane.quartz.admin.domain"
+			targetProject="quartz-gui" />
+		<sqlMapGenerator targetPackage="cn.kane.quartz.admin.mapper"
+			targetProject="quartz-gui" />
+		<javaClientGenerator targetPackage="cn.kane.quartz.admin.mapper"
+			targetProject="quartz-gui" type="XMLMAPPER" />
+		<table schema="" tableName="quartz_admin_scheduler" domainObjectName="AdminScheduler"/>
+		<table schema="" tableName="quartz_admin_job" domainObjectName="AdminJob"/>
+		<table schema="" tableName="quartz_admin_trigger" domainObjectName="AdminTrigger"/>
+	</context>
+</generatorConfiguration>
